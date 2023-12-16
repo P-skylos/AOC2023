@@ -2,7 +2,7 @@
 
 ⍝ we want to select a window around each number and then check that window for non-number, non-periods
 grid←↑(⎕UCS 10)(≠⊆⊢)⊃⎕NGET 'input'
-syms←'!@#$%^&*-+\/?><,()[]{}'
+⎕←syms←∪∊('[^.0-9]'⎕S{⍵.Match})∊grid
 convolve←{(~⍵)∧({∨/,⍵}⌺3 3)⍵}
 adj←convolve syms∊⍨grid
 nums←grid∊'01234567890'
